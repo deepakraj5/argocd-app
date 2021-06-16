@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: example-app-deployment
+  template:
+    metadata:
+      labels:
+        app: example-app-deployment
+    spec:
+      containers:
+      - name: example-app-deployment
+        image: deepakdocker04/example-kube-app:0.0.1.RELEASE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: example-app-configmap
+              key: message
