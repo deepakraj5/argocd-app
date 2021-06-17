@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: example-app-configmap
 data:
-  message: "message from configmap"
+  message: "message from configmap report"
